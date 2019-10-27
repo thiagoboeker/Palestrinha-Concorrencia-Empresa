@@ -298,6 +298,6 @@ Supervisao trata de **Tolerancia a falha**. Significa que, o Ator Pai ira tratar
 
 Hoje nós ja sabemos o que é programacao reativa certo? Errado!
 
-Usar uma lib como por exemplo RxJS nao é necessariamente estar programando de forma reativa, voce estara apenas utilizando um aspecto de _*Data Stream*_. É bom a gente nao confundir as coisas, programacao reativa envolve todo o pacote de coisas que disctutimos tambem como Mensageria, Tolerancia a Falha e outros como **Elasticidade** e **Responsivo**.
+Usar uma lib como por exemplo RxJS nao é necessariamente estar programando de forma reativa, voce estara apenas utilizando um aspecto de _*Data Stream*_. É bom a gente nao confundir as coisas, programacao reativa envolve todo o pacote de coisas que disctutimos tambem como Mensageria, Tolerancia a Falha e outros como **Elasticidade** e **Responsividade**.
 
 Com isso chegamos ao final, espero que todos tenham aproveitado a discussão e que isso agregue no trabalho de voces.
