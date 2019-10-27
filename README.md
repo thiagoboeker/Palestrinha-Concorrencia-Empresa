@@ -272,7 +272,7 @@ A BEAM trabalha de um jeito unico, ela abstrai todos os conceitos citados anteri
 - Processos
   - Na BEAM tudo são processos. Processos sao "threads" com um custo infimo, a propria BEAM em si é um mero processo na maquina que a hospeda.
   - Processos podem receber mensagens e tem seu proprio contexto de execucao.
-  - Servim de base para abstracoes ainda mais poderosas como ```Agent``` e ```GenServer```.
+  - Servem de base para abstracoes ainda mais poderosas como ```Agent``` e ```GenServer```.
 - Schedulers
   - A BEAM trabalha muito bem seus schedulers. Quando Erlang foi criado em 1982, as maquinas da epoca existiam apenas com basicamente 1 core. Ela foi criada nesse ambiente hostil, porem com a evolução dos cores ela aflorou e agora ela tira o maximo proveito disso. Agora com multicore a BEAM automaticamente coloca 1 scheduler por core e orquestra o seu codigo para ser executado em todos os cores. **O seu codigo ja nasce otimizado por natureza**.
 
