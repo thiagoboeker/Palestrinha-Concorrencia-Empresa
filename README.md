@@ -163,6 +163,34 @@ Agora veremos o exemplo onde iremos lockar as operacoes:
 
 Os mutex protegem a regiao critica das funcoes, eles sequestram as variaveis envolvidas nao permitindo nenhuma operacao envolvendo-as, porem como sabemos isso acarreta em perdas de performance em ordem de magnitude.
 
+```go
+// Funcao de Saque direto da conta
+func Saque(conta *Account, valor int, signal chan bool, mutex *sync.Mutex) {
+  // Se o saldo for maior que o valor requrido, realizar o saque
+  mutex.Lock()
+  if conta.Saldo >= valor {
+    PrintOp(conta, "Saque", valor)
+    conta.Saldo = conta.Saldo - valor
+    PrintSaldo(conta)
+  }
+  mutex.Unlock()
+  signal <- true
+}
+
+// Funcao de Deposito direto em conta
+func Deposito(conta *Account, valor int, signal chan bool, mutex *sync.Mutex) {
+  mutex.Lock()
+  PrintOp(conta, "Deposito", valor)
+  conta.Saldo = conta.Saldo + valor
+  PrintSaldo(conta)
+  mutex.Unlock()
+  signal <- true
+}
+
+```
+
+Percebam o ```mutex.Lock()``` e ```mutex.Unlock()``` dentro das funcoes, com isso estamos protegendo as operacoes de atualizacao de _*Data Race*_, mas estamos ao mesmo tempo matando a performance do nosso sistema. Entao como regra geral podemos dizer que, a perda de performance com Locks pode ser tolerada se este for o ultimo recurso.
+
 #### O melhor de dois mundos
 
 Agora iremos ver esse mesmo exemplo na nossa proposta de solução para a maiorias dos problemas apresentados:
@@ -197,7 +225,7 @@ def operate([name: name, saldo: saldo] = opts) do
 end
 ```
 
-Existira um processo que recebera as mensagens de ```receive``` para saques e depositos, o nosso processo tera uma mailbox e processara uma mensagem por vez, nós finalmente estamos falando sobre **garantias**.
+Existira um processo que recebera as mensagens em ```receive``` para saques e depositos, o nosso processo tera uma mailbox e processara uma mensagem por vez, nós finalmente estamos falando sobre **garantias**.
 
 Para testar, nos enviamos as mensagens para o nosso processo e esperamos as respostas logo em seguida
 
