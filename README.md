@@ -191,6 +191,10 @@ func Deposito(conta *Account, valor int, signal chan bool, mutex *sync.Mutex) {
 
 Percebam o ```mutex.Lock()``` e ```mutex.Unlock()``` dentro das funcoes, com isso estamos protegendo as operacoes de atualizacao de _*Data Race*_, mas estamos ao mesmo tempo matando a performance do nosso sistema. Entao como regra geral podemos dizer que, a perda de performance com Locks pode ser tolerada se este for o ultimo recurso.
 
+#### Deadlocks
+
+Um problema muito comum nesse modelo de concorrencia sao Deadlocks. Ele basicamente trata de, um processo esperando o outro porem o outro tambem esta esperando esse um. Entao ninguem vai pra lugar algum e todos ficam em modo de espera. Esses problemas sao serios e podem matar a sua aplicacao. Tome cuidado.
+
 #### O melhor de dois mundos
 
 Agora iremos ver esse mesmo exemplo na nossa proposta de solução para a maiorias dos problemas apresentados:
