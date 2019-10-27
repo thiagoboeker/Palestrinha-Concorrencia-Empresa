@@ -260,9 +260,11 @@ O exemplo acima utiliza a linguagem **Elixir**.
 
 Elixir é uma linguagem relativamente nova, foi criada com base na junção de Ruby com **Erlang**.
 
-#### Erlang: A BEAM
+#### Erlang BEAM: De Volta para o Futuro
 
-![](erlang.jpg)
+O Erlang nasceu nos anos 80, porem ele nunca foi tao necessario quanto é agora.
+
+![](back_future.jpg)
 
 Muitos no nosso meio brincam que a BEAM poderia ser considerada uma das maravilhas do mundo. Mas por que?
 A BEAM trabalha de um jeito unico, ela abstrai todos os conceitos citados anteriomente em apenas alguns poucos:
